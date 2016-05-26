@@ -17,7 +17,9 @@ if(__name__== "__main__"):
     rows = db.cursor.fetchall()
 
     for row in rows:
-        if(row):
+        db.cursor.execute(""" select id from shouji_send_sms WHERE order_sn=%s""",[row['order_sn']])
+        smsRow = db.cursor.fetchone()
+        if(smsRow is None):
             req=top.api.AlibabaAliqinFcSmsNumSendRequest()
             req.set_app_info(top.appinfo(AliyunConfig.appkey,AliyunConfig.secret))
 
@@ -29,5 +31,8 @@ if(__name__== "__main__"):
             req.sms_template_code="SMS_9651659"
             try:
                 resp = req.getResponse()
+                # print(resp['alibaba_aliqin_fc_sms_num_send_response']['result']['err_code'])
+                if(resp['alibaba_aliqin_fc_sms_num_send_response']['result']['err_code'] == '0'):
+                    db.cursor.execute(""" INSERT INTO shouji_send_sms(send_type,user_id,mobile,order_sn,add_time,status) VALUES(%s,%s,%s,%s,%s,%s) """,[3,row['user_id'],row['mobile'],row['order_sn'],datetime.datetime.now(),1])
             except Exception,e:
                 print(e)

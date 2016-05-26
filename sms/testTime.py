@@ -1,6 +1,8 @@
 import datetime,time
 
-nowTimestamp = int(time.mktime(datetime.datetime.now().timetuple()))
-nowTimestamp = nowTimestamp - 100000*60
+# nowTimestamp = int(time.mktime(datetime.datetime.now().timetuple()))
+# nowTimestamp = nowTimestamp - 100000*60
+#
+# print(nowTimestamp)
 
-print(nowTimestamp)
+print(datetime.datetime.now())
