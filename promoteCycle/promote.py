@@ -16,6 +16,6 @@ if __name__ == '__main__' :
         if(goods.get('promote_end_date')<=timeUnix()):
             startDate = goods.get('promote_end_date')
             endDate = int(goods.get('promote_end_date')) + int(goods.get('promote_cycle'))*24*3600
-            cursor.execute(""" update shouji_goods SET promote_start_date=%s,promote_end_date=%s""" % (startDate,endDate))
+            cursor.execute(""" update shouji_goods SET promote_start_date=%s,promote_end_date=%s WHERE goods_id=%s""" % (startDate,endDate,goods.get('goods_id')))
     cursor.close()
     connect.close()
