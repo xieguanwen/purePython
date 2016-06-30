@@ -11,7 +11,7 @@ class ConstError(Exception):
 class Const(object):
     def __init__(self):
         self.adPathResource = '/data/www/xiaolajiao8181/data/afficheimg'
-        self.adPathTarget = '/data/www/xiaolajiao8181/data/afficheimg/webp'
+        self.adPathTarget = '/data/www/xiaolajiao8181/data/afficheimg'
         self.goodsImagePath = '/data/www/xiaolajiao8181/images'
         self.thumb_img = (300,300)
         self.source_img = (800,800)
@@ -31,7 +31,7 @@ class ImageExtendName(object):
     '''
     classdocs
     '''
-    __discImageExtendName = {'.png':'PNG','.jpg':'JPEG','.gif':'GIF'}
+    __discImageExtendName = {'.jpg':'JPEG'}
 
     @staticmethod
     def isExtendName(extendName):

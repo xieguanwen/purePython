@@ -41,6 +41,9 @@ def multiGenerateImage(dirPath):
 
 if __name__ == "__main__":
     log()   # open log
-    generateAdImage()   # generate ad image webp format
-
-    multiGenerateImage(constConfig.goodsImagePath) # generate image webp format
+    try:
+        generateAdImage()   # generate ad image webp format
+        multiGenerateImage(constConfig.goodsImagePath) # generate image webp format
+    except Exception,e:
+        print(e)
+        logging.info(e)
